@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
+  collapsed: boolean = true;
 
+  user: any;
+
+  constructor() {
+  }
 }
