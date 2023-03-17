@@ -6,9 +6,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './auth/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ServicesComponent } from './services/services.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,13 +17,13 @@ import { ServicesComponent } from './services/services.component';
     LoginComponent,
     FooterComponent,
     RegisterComponent,
-    DashboardComponent,
     ServicesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
