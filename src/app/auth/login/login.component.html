@@ -1,1 +1,56 @@
-<p>login works!</p>
+<div class="vh-100 d-flex CenteringLoginPage">
+  <div class="container container-top-margin">
+    <div class="row justify-content-center">
+      <div class="col-md-9 col-lg-6 col-xl-6">
+        <div class="card shadow-lg border-0 my-5">
+          <div class="card-body">
+              <div class="col-lg-12">
+                <div class="p-5">
+                  <h4 class="text-center text-warning mb-4">Welkom terug!</h4>
+                  <form>
+                    <input
+                      class="mb-3 form-control form-control-user"
+                      type="email"
+                      placeholder="E-mail adres"
+                      formControlName="email"
+                      name="email"
+                    />
+                    <input
+                      class="mb-3 form-control form-control-user"
+                      type="password"
+                      placeholder="Wachtwoord"
+                      formControlName="password"
+                      name="password"
+                    />
+                    <div class="form-check mb-3">
+                      <input
+                        class="form-check-input"
+                        formControlName="rememberMe"
+                        type="checkbox"
+                        value=""
+                        id="rememberMe"
+                      />
+                      <label class="form-check-label" for="rememberMe">
+                        Onthoud mij
+                      </label>
+                    </div>
+                    <button
+                      class="btn btn-warning d-block btn-user w-100 mb-2"
+                      type="submit">
+                        <div>
+                        <i class="bi bi-box-arrow-in-right"></i>Login
+                      </div>
+                    </button>
+                  </form>
+                  <div class="text-center">
+                    <a class="small text-decoration-none text-warning" routerLink="/">Geen account? Registreer dan nu</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
