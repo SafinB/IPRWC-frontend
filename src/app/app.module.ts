@@ -10,6 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ServicesComponent } from './services/services.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import {ReactiveFormsModule} from "@angular/forms";
     RegisterComponent,
     ServicesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    NoopAnimationsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        NoopAnimationsModule,
+        ReactiveFormsModule,
+        MatInputModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
