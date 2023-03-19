@@ -11,6 +11,7 @@ import { ServicesComponent } from './services/services.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import { PasswordStrengthComponent } from './register/password-strength/password-strength.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {MatInputModule} from "@angular/material/input";
     LoginComponent,
     FooterComponent,
     RegisterComponent,
-    ServicesComponent
+    ServicesComponent,
+    PasswordStrengthComponent
   ],
     imports: [
         BrowserModule,
