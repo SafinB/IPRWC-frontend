@@ -12,6 +12,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { PasswordStrengthComponent } from './register/password-strength/password-strength.component';
+import { AdminComponent } from './admin/admin.component';
+import { ProductCreateComponent } from './admin/product-create/product-create.component';
+import { ProductUpdateComponent } from './admin/product-update/product-update.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { PasswordStrengthComponent } from './register/password-strength/password
     FooterComponent,
     RegisterComponent,
     ServicesComponent,
-    PasswordStrengthComponent
+    PasswordStrengthComponent,
+    AdminComponent,
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductsComponent
   ],
     imports: [
         BrowserModule,
