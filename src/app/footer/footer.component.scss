@@ -1,9 +1,41 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex: 1;
+}
+
+#app {
+  flex: 1;
+}
+
 footer {
-  background-color: #E1C699;
+  background-color: #582414;
   padding: 20px;
   text-align: center;
+  z-index: 100;
+  color: white;
 }
 
 footer p {
   margin: 0;
+}
+
+.container {
+  padding-bottom: 8rem;
+}
+
+.footer a {
+  color: #f5ebdc;
+  text-decoration: none;
+}
+
+.footer span{
+  color: #f5ebdc;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: white;
+  transition: 0.3s;
 }

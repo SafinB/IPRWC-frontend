@@ -7,7 +7,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { ServicesComponent } from './services/services.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
@@ -16,6 +15,10 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductCreateComponent } from './admin/product-create/product-create.component';
 import { ProductUpdateComponent } from './admin/product-update/product-update.component';
 import { ProductsComponent } from './products/products.component';
+import { HerobannerComponent } from './herobanner/herobanner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from "@angular/common/http";
+import {ToastsContainer} from "./shared/toast/toasts-container.component";
 
 @NgModule({
   declarations: [
@@ -24,12 +27,12 @@ import { ProductsComponent } from './products/products.component';
     LoginComponent,
     FooterComponent,
     RegisterComponent,
-    ServicesComponent,
     PasswordStrengthComponent,
     AdminComponent,
     ProductCreateComponent,
     ProductUpdateComponent,
-    ProductsComponent
+    ProductsComponent,
+    HerobannerComponent,
   ],
     imports: [
         BrowserModule,
@@ -37,7 +40,10 @@ import { ProductsComponent } from './products/products.component';
         MatToolbarModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ToastsContainer,
     ],
   providers: [],
   bootstrap: [AppComponent]
