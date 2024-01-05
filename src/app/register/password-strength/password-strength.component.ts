@@ -8,8 +8,9 @@ import {EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/cor
 })
 export class PasswordStrengthComponent {
 
-  @Input() public passwordToCheck: string;
-  @Output() passwordStrength = new EventEmitter<boolean>();
+  @Input() public passwordToCheck?: null
+  @Output() passwordMessage = new EventEmitter<string>();
+  @Output() passwordStrength: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   bar0: string;
   bar1: string;
@@ -20,7 +21,7 @@ export class PasswordStrengthComponent {
     this.bar0 = '';
     this.bar1 = '';
     this.bar2 = '';
-    this.passwordToCheck = '';
+    this.passwordToCheck = null;
     this.msg = '';
   }
 
@@ -41,20 +42,20 @@ export class PasswordStrengthComponent {
     return passedMatches;
   }
 
-
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
     this.resetBarColors();
     const score = this.checkStrength(changes['passwordToCheck'].currentValue);
     this.setBarColors(score);
-    if(score === 5) {
-      this.msg = 'Uw wachtwoord voldoet aan de eisen.';
-      this.passwordStrength.emit(true);
-    } else {
-      this.msg = 'Een wachtwoord moet minimaal 10 tekens bevatten en minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken.'
+    if (score != 5) {
+      this.msg = 'Een wachtwoord moet minimaal 10 tekens bevatten en minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken.';
       this.passwordStrength.emit(false);
+      this.passwordMessage.emit(this.msg);
+    } else {
+      this.msg = '';
+      this.passwordStrength.emit(true);
+      this.passwordMessage.emit(this.msg);
     }
   }
-
 
   setBarColors(score: number) {
     if (score === 5) {

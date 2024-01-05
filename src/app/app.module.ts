@@ -19,6 +19,8 @@ import { HerobannerComponent } from './herobanner/herobanner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import {ToastsContainer} from "./shared/toast/toasts-container.component";
+import { CartComponent } from './cart/cart.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import {ToastsContainer} from "./shared/toast/toasts-container.component";
     ProductUpdateComponent,
     ProductsComponent,
     HerobannerComponent,
+    CartComponent,
   ],
     imports: [
         BrowserModule,

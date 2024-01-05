@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Subject} from "rxjs";
 import {UserDTO} from "../models/userDTO.model";
-import {User} from "../../models/user.model";
+import {User} from "../models/User";
 import {ErrorHandlingService} from "./errorhandling.service";
 
 @Injectable({

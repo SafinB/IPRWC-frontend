@@ -1,45 +1,20 @@
+<app-toasts></app-toasts>
 <app-navigation></app-navigation>
 
-<div class="table-responsive mt-3">
-  <table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let product of products">
-    <td>{{ product.name }}</td>
-    <td>{{ product.price }}</td>
-    <td>{{ product.description }}</td>
-    <div class="btn-group" role="group">
-      <button
-        type="button"
-        class="btn btn-outline-danger tableIcon"
-        placement="top"
-        ngbTooltip="Verwijder product"
-        container="body"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="15"
-          height="15"
-          fill="currentColor"
-          class="bi bi-trash3-fill"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
-          />
-        </svg>
-      </button>
+<div class="scroll-target container mt-5">
+  <div class="row mt-5">
+    <div class="col-md-4 mb-5" *ngFor="let product of products">
+      <div class="card mb-4 rounded-0 shadow h-100">
+        <img src="/assets/Img/burgerking2.jpg" class="card-img-top rounded-0" alt="Product Image">
+        <div class="card-body">
+          <h1 class="card-title">{{ product.name }}</h1>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">{{ product.price | currency }}</p>
+          <button (click)="addToCart(product)" class="btn btn-warning">Toevoegen aan winkelmand</button>
+        </div>
+      </div>
     </div>
-  </tr>
-  </tbody>
-  </table>
+  </div>
 </div>
 
 <app-footer></app-footer>
-

@@ -9,7 +9,7 @@ import {fadeAnimation} from "./shared/animaties/FadeAnimation";
   animations: [fadeAnimation]
 })
 export class AppComponent {
-  title = 'IPRWC Frontend';
+  title = 'Burgerking';
 
   getRouteAnimationState(outlet: RouterOutlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';

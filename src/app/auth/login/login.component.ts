@@ -17,7 +17,6 @@ export class LoginComponent {
 
   loginForm: FormGroup = new FormGroup({});
 
-
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [
