@@ -4,6 +4,7 @@ import {CartService} from "../shared/services/cart.service";
 import {Cart} from "../shared/models/Cart";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
+import {ToastService} from "../shared/toast/toast-services";
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,8 @@ export class CartComponent implements OnInit {
   cartItems: Cart[] = [];
 
   constructor(private cartService: CartService,
-              private router: Router) {}
+              private router: Router,
+              private toastService: ToastService) {}
 
   ngOnInit() {
     this.cartItems = this.cartService.getCartItems();
@@ -58,6 +60,7 @@ export class CartComponent implements OnInit {
 
   removeProductFromCart(productId: number) {
     this.cartService.removeProduct(productId);
+    this.toastService.show('Product succesvol verwijderd uit je winkelmandje', {classname: 'bg-info text-light', delay: 2000});
   }
 
   calculateTotalAmount(): number {
