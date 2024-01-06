@@ -15,8 +15,6 @@ import {ErrorHandlingService} from "./errorhandling.service";
 export class AuthService {
 
     private LoggedIn = new BehaviorSubject<boolean>(this.userLoggedIn());
-    // private loggedIn: boolean = false;
-    private infoSub: Subscription = new Subscription();
 
     isLoggedIn$ = this.LoggedIn.asObservable();
 
@@ -77,7 +75,6 @@ export class AuthService {
           );
   };
 
-
     userDetailHandler(): Observable<void> {
         let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})
         return this.http.get<ApiResponse>(environment.apiKey + 'auth/info',
@@ -96,12 +93,7 @@ export class AuthService {
             }))
     }
 
-    userNotLoggedIn(): void {
-        return this.LoggedIn.next(false);
-    }
-
     userLoggedIn(): boolean {
-        // return this.loggedIn;
         return this.userService.getJWT() != undefined;
     }
 
