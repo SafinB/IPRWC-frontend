@@ -8,7 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { PasswordStrengthComponent } from './register/password-strength/password-strength.component';
 import { AdminComponent } from './admin/admin.component';
@@ -47,6 +47,7 @@ import { CartComponent } from './cart/cart.component';
         BrowserAnimationsModule,
         HttpClientModule,
         ToastsContainer,
+        FormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

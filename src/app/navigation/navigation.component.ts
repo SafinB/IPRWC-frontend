@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {UserService} from "../shared/services/user.service";
+import {AuthService} from "../shared/services/auth.Service";
 
 @Component({
   selector: 'app-navigation',
@@ -8,8 +10,19 @@ import { Component } from '@angular/core';
 export class NavigationComponent {
   collapsed: boolean = true;
 
-  user: any;
+  isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
+  user?: string = this.userService.getUser()?.fullName;
 
-  constructor() {
+  constructor(private authService: AuthService,
+              private userService: UserService) {}
+
+  userLoggedIn() {
+    this.isLoggedIn = this.authService.userLoggedIn();
+    return this.isLoggedIn;
+  }
+
+  UserLogout() {
+    this.authService.logout();
   }
 }

@@ -4,13 +4,15 @@ import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {ProductsComponent} from "./products/products.component";
 import {HerobannerComponent} from "./herobanner/herobanner.component";
+import {CartComponent} from "./cart/cart.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'home', component: HerobannerComponent},
   {path: 'login', component: LoginComponent, data: { animation: 'openClosePage' }},
   {path: 'register', component: RegisterComponent},
-  {path: 'products', component: ProductsComponent}
+  {path: 'products', component: ProductsComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

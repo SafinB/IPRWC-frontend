@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, map, Observable, Subscription} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, Subscription} from "rxjs";
 import {environment} from "../../../environment/environment";
 import {Router} from "@angular/router";
 import {UserService} from "./user.service";
@@ -14,10 +14,14 @@ import {ErrorHandlingService} from "./errorhandling.service";
 })
 export class AuthService {
 
-  private loggedIn: boolean = false;
-  private infoSub: Subscription = new Subscription();
+    private LoggedIn = new BehaviorSubject<boolean>(this.userLoggedIn());
+    // private loggedIn: boolean = false;
+    private infoSub: Subscription = new Subscription();
 
-  constructor(private http: HttpClient,
+    isLoggedIn$ = this.LoggedIn.asObservable();
+
+
+    constructor(private http: HttpClient,
               private router: Router,
               private userService: UserService,
               private toastService: ToastService,
@@ -35,13 +39,13 @@ export class AuthService {
         if (response.code === 'ACCEPTED') {
           this.userService.setJWT(response.message);
           this.userDetailHandler().subscribe({next: () => {
-              this.loggedIn = true;
-              this.toastService.show('Login successful', {classname: 'bg-success text-light', delay: 5000});
+              this.LoggedIn.next(true);
+              this.toastService.show('Login successful', {classname: 'bg-success text-light', delay: 2000});
               this.router.navigate(['/home']);
             }});
         } else {
-          this.toastService.show(response.message, {classname: 'bg-danger text-light', delay: 5000});
-          this.loggedIn = false;
+          this.toastService.show(response.message, {classname: 'bg-danger text-light', delay: 2000});
+            this.LoggedIn.next(false);
         }
         return true;
       }),
@@ -92,16 +96,21 @@ export class AuthService {
             }))
     }
 
-    userNotLoggedIn(): boolean {
-        return !this.loggedIn;
+    userNotLoggedIn(): void {
+        return this.LoggedIn.next(false);
+    }
 
+    userLoggedIn(): boolean {
+        // return this.loggedIn;
+        return this.userService.getJWT() != undefined;
     }
 
     logout(): void {
         this.userService.destroyJWT();
         this.userService.destroyUser();
         this.router.navigate(['/login']);
-        this.loggedIn = false;
-        this.toastService.show('You have succesfully logged out', {classname: 'bg-info text-light', delay: 2000});
+        this.LoggedIn.next(false);
+        this.toastService.show('Je hebt met succes uitgelogd',
+            {classname: 'bg-info text-light', delay: 2000});
     }
 }

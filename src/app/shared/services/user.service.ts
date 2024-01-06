@@ -11,7 +11,7 @@ import {ErrorHandlingService} from "./errorhandling.service";
 )
 
 export class UserService {
-  public userName$: Subject<string> = new BehaviorSubject<string>("User name");
+  public userName$: Subject<string> = new BehaviorSubject<string>("name");
   public users: UserDTO[] = [];
 
   constructor(

@@ -41,7 +41,7 @@ export class ProductsComponent implements OnInit{
     }
 
     addToCart(product: Product) {
-        if (this.authService.userNotLoggedIn()){
+        if (this.authService.userLoggedIn() === false) {
             Swal.fire({
                 title: "Je bent niet ingelogd",
                 text: "Log in om dit product toe te voegen aan je winkelmandje",
@@ -53,15 +53,34 @@ export class ProductsComponent implements OnInit{
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
-                        text: "Je word nu doorgestuurd naar de login pagina",
+                        text: "Je wordt nu doorgestuurd naar de login pagina",
                         icon: "success"
                     }).then(() => {
                         this.router.navigate(['/login']);
                     });
                 }
-            });        } else {
-            this.cartService.addToCart(product);
-            this.toastService.show('Product added to cart', {classname: 'bg-success text-light', delay: 5000});
+            });
+        } else {
+            this.cartService.addToCart(product, 1);
+            Swal.fire({
+                title: "Je hebt dit product toegevoegd aan je winkelmandje",
+                text: "Wil je verder winkelen of naar je winkelmandje gaan?",
+                icon: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Winkelmandje",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        text: "Je wordt nu doorgestuurd naar je winkelmandje",
+                        icon: "success"
+                    }).then(() => {
+                        this.router.navigate(['/cart']);
+                    });
+                }
+            });
         }
     }
+
 }
