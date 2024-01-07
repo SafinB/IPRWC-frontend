@@ -5,6 +5,7 @@ import {RegisterComponent} from "./register/register.component";
 import {ProductsComponent} from "./products/products.component";
 import {HerobannerComponent} from "./herobanner/herobanner.component";
 import {CartComponent} from "./cart/cart.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, data: { animation: 'openClosePage' }},
   {path: 'register', component: RegisterComponent},
   {path: 'products', component: ProductsComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({

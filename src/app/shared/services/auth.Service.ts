@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, catchError, map, Observable, Subscription} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable} from "rxjs";
 import {environment} from "../../../environment/environment";
 import {Router} from "@angular/router";
 import {UserService} from "./user.service";

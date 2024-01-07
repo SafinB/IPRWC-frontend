@@ -9,6 +9,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav navbar-nav ms-auto navigation">
+
+        <li *ngIf="isAdmin" class="nav-item">
+          <a class="nav-link navtext fs-6 ms-3" routerLink="/admin"><i class="bi bi-gear spaceBetween"></i>admin</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link navtext fs-6 ms-3" aria-current="page" routerLink="/products">Producten</a>
         </li>
@@ -16,6 +21,7 @@
         <li *ngIf="userLoggedIn()" class="nav-item">
           <a class="nav-link navtext fs-6 ms-3" routerLink="/cart"><i class="bi bi-cart-fill"></i></a>
         </li>
+
         <li *ngIf="userLoggedIn()" class="nav-item">
           <button (click)="UserLogout()" class="btn rounded-5 ms-3" routerLink="/home">Log uit</button>
         </li>
