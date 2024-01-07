@@ -3,9 +3,9 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-8">
+        <div class="card p-3 shadow col-md-8">
             <h2>Winkelwagen</h2>
-            <div *ngFor="let cartItem of cartItems" class="card p-3 shadow mb-3">
+            <div *ngFor="let cartItem of cartItems" class="card p-2 shadow mb-3">
                 <div class="card-body">
                     <h1 class="card-title">{{ cartItem.product.name }}</h1>
                     <p class="card-text">Prijs: {{ cartItem.product.price | currency }}</p>
@@ -26,14 +26,16 @@
         <div class="col-md-4">
             <div class="card p-3 shadow">
                 <div class="card-body">
-                    <h2>Totaalbedrag</h2>
-                    <p>Totaal: {{ calculateTotalAmount() | currency }}</p>
-
+                    <h2>Afrekenen</h2>
+                    <p>Totaalbedrag: {{ calculateTotalAmount() | currency }}</p>
+                    <button (click)="removeAllProductsFromCart()" class="btn btn-danger mt-3 btn-space">Cart Legen</button>
+                    <button class="btn btn-success mt-3">Bestellen</button>
                     <form>
-                        <div class="mb-3">
+                        <div class="mb-3 mt-5">
                             <input type="text" class="form-control" id="promoCode" placeholder="Promocode">
                         </div>
                         <button type="button" class="btn btn-warning">Toepassen</button>
+
                     </form>
                 </div>
             </div>

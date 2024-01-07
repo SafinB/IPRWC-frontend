@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Product} from "../models/product.model";
-import {Cart} from "../models/Cart";
-import {Subject} from "rxjs";
+import { Product } from "../models/product.model";
+import { Cart } from "../models/Cart";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -9,6 +9,14 @@ import {Subject} from "rxjs";
 export class CartService {
     private cart: Cart[] = [];
     private cartSubject = new Subject<Cart[]>();
+
+    constructor() {
+        const storedCart = sessionStorage.getItem('cart');
+        if (storedCart) {
+            this.cart = JSON.parse(storedCart);
+            this.cartSubject.next([...this.cart]);
+        }
+    }
 
     getCartItems() {
         return this.cart;
@@ -23,7 +31,7 @@ export class CartService {
             this.cart.push({ product, amount });
         }
 
-        this.cartSubject.next(this.cart.slice());
+        this.updateSessionStorage();
     }
 
     removeProduct(productId: number) {
@@ -32,6 +40,8 @@ export class CartService {
         if (index !== -1) {
             this.cart.splice(index, 1);
             this.cartSubject.next([...this.cart]);
+
+            this.updateSessionStorage();
         }
     }
 
@@ -41,10 +51,23 @@ export class CartService {
         if (index !== -1) {
             this.cart[index] = updatedCartItem;
             this.cartSubject.next([...this.cart]);
+
+            this.updateSessionStorage();
         }
+    }
+
+    removeAllProducts() {
+        this.cart = [];
+        this.cartSubject.next([...this.cart]);
+
+        this.updateSessionStorage();
     }
 
     getCartUpdates() {
         return this.cartSubject.asObservable();
+    }
+
+    private updateSessionStorage() {
+        sessionStorage.setItem('cart', JSON.stringify(this.cart));
     }
 }

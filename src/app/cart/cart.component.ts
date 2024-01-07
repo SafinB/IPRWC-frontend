@@ -63,6 +63,15 @@ export class CartComponent implements OnInit {
     this.toastService.show('Product succesvol verwijderd uit je winkelmandje', {classname: 'bg-info text-light', delay: 2000});
   }
 
+  removeAllProductsFromCart() {
+    if (this.cartItems.length === 0) {
+      this.toastService.show('Er zijn geen producten om te verwijderen', {classname: 'bg-danger text-light', delay: 2000});
+    } else{
+      this.cartService.removeAllProducts();
+      this.toastService.show('Alle producten succesvol verwijderd uit je winkelmandje', {classname: 'bg-info text-light', delay: 2000});
+    }
+  }
+
   calculateTotalAmount(): number {
     return this.cartItems.reduce((total, cartItem) => total + (cartItem.product.price * cartItem.amount), 0);
   }

@@ -8,6 +8,7 @@ import {ApiResponse} from "../models/ApiResponse.model";
 import {User} from "../models/User";
 import {ToastService} from "../toast/toast-services";
 import {ErrorHandlingService} from "./errorhandling.service";
+import {CartService} from "./cart.service";
 
 @Injectable({
   providedIn: "root"
@@ -20,11 +21,11 @@ export class AuthService {
 
 
     constructor(private http: HttpClient,
-              private router: Router,
-              private userService: UserService,
-              private toastService: ToastService,
-              private errorHandlingService: ErrorHandlingService
-              ) {}
+                private router: Router,
+                private userService: UserService,
+                private toastService: ToastService,
+                private errorHandlingService: ErrorHandlingService,
+                private cartService: CartService) {}
 
   login(email: string, password: string): Observable<boolean> {
     const apiUrl = 'auth/login';
@@ -98,6 +99,7 @@ export class AuthService {
     }
 
     logout(): void {
+        this.cartService.removeAllProducts();
         this.userService.destroyJWT();
         this.userService.destroyUser();
         this.router.navigate(['/login']);
