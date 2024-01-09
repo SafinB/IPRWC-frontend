@@ -8,6 +8,7 @@ import {CartComponent} from "./cart/cart.component";
 import {AdminComponent} from "./admin/admin.component";
 import {ProductViewComponent} from "./admin/product-view/product-view.component";
 import {ProductCreateComponent} from "./admin/product-view/product-create/product-create.component";
+import {ProductUpdateComponent} from "./admin/product-view/product-update/product-update.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'product-view', component: ProductViewComponent},
-  {path: 'product-create', component: ProductCreateComponent}
+  {path: 'product-create', component: ProductCreateComponent},
+  {path: 'product-update/:id', component: ProductUpdateComponent}
 ];
 
 @NgModule({

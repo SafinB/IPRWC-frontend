@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, map, Observable} from 'rxjs';
+import {catchError, map, Observable, pipe} from 'rxjs';
 import {ErrorHandlingService} from "./errorhandling.service";
 import {environment} from "../../../environment/environment";
 import {UserService} from "./user.service";
 import {ApiResponse} from "../models/ApiResponse.model";
 import {ToastService} from "../toast/toast-services";
+import {Product} from "../models/product.model";
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
+
+    public productID!: string;
 
     constructor(private http: HttpClient,
                 private errorHandlingService: ErrorHandlingService,
@@ -48,6 +51,11 @@ export class ProductService {
         );
     }
 
+    public getProductById(id: number): Observable<Product> {
+        return this.http.get<Product>('/user/' + id)
+            .pipe(catchError(this.errorHandlingService.throwError));
+    }
+
     public createProduct(product: Object) {
         let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})
         return this.http.post(environment.apiKey + 'product/insert', product, {
@@ -78,16 +86,33 @@ export class ProductService {
         ));
     }
 
-    public updateProduct(updatedCode: Object): Observable<void> {
-        let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})
-        return this.http.put<ApiResponse>(environment.apiKey + 'product/update', updatedCode, {
-            headers: header
-        })
-            .pipe(map(data => {
-                if (data.code === 'ACCEPTED') {
-                } else {
-                    throw new Error(data.message)
-                }
-            }));
+    updateProductData(name: string, price: number, description: string, id: string) {
+        const updateProductData = {
+            id: id,
+            name: name,
+            price: price,
+            description: description,
+        }
+        console.log(updateProductData);
+        return this.http.put<ApiResponse>(environment.apiKey + 'product/update', updateProductData)
+            .pipe(
+                map(data => {
+                    if (data.code === 'ACCEPTED') {
+                        return data;
+                    } else {
+                        throw new Error(data.message);
+                    }
+                }),
+                catchError(error => {
+                    if (error instanceof HttpErrorResponse) {
+                        this.errorHandlingService.handleHttpError('HTTP error occurred:', error)
+                    }
+                    return this.errorHandlingService.throwError(error)
+                })
+            );
+    };
+
+    setProductID(id: string): void{
+        this.productID = id;
     }
 }

@@ -5,7 +5,8 @@
     <div class="container d-flex justify-content-end">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a type="button" class="btn btn-success" routerLink="/product-create">
-            <i class="bi bi-clipboard2-plus-fill"></i> Creëer product</a>
+                <i class="bi bi-clipboard2-plus-fill"></i> Creëer product
+            </a>
         </div>
     </div>
 </nav>
@@ -26,7 +27,7 @@
                 <td class="px-4">{{ product.description }}</td>
                 <td class="px-4">{{ product.price }}</td>
                 <td class="px-4 text-end">
-                    <button class="btn btn-outline-warning spaceBetween">
+                    <button class="btn btn-outline-warning spaceBetween" (click)="onProductUpdateClick(product.id.toString())">
                         <i class="bi bi-pencil"></i>
                     </button>
                     <button class="btn btn-outline-danger" (click)="deleteProduct(product.id)">
