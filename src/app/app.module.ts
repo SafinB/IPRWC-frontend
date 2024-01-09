@@ -12,14 +12,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { PasswordStrengthComponent } from './register/password-strength/password-strength.component';
 import { AdminComponent } from './admin/admin.component';
-import { ProductCreateComponent } from './admin/product-create/product-create.component';
-import { ProductUpdateComponent } from './admin/product-update/product-update.component';
+import { ProductCreateComponent } from './admin/product-view/product-create/product-create.component';
+import { ProductUpdateComponent } from './admin/product-view/product-update/product-update.component';
 import { ProductsComponent } from './products/products.component';
 import { HerobannerComponent } from './herobanner/herobanner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import {ToastsContainer} from "./shared/toast/toasts-container.component";
 import { CartComponent } from './cart/cart.component';
+import { ProductViewComponent } from './admin/product-view/product-view.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CartComponent } from './cart/cart.component';
     ProductsComponent,
     HerobannerComponent,
     CartComponent,
+    ProductViewComponent,
   ],
     imports: [
         BrowserModule,

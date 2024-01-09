@@ -1,4 +1,4 @@
-.CenteringRegisterPage {
+.CenteringCreateProductPage {
   justify-items: center;
   align-items: center;
 }
@@ -7,8 +7,12 @@ body{
   background-color: #EEEEEE;
 }
 
-.maakAccount{
+.maakProduct{
   background-color: #ffc107;
   justify-items: center;
   align-items: center;
+}
+
+.spaceBetween{
+  margin-right: 20px;
 }

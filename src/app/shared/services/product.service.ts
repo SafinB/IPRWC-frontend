@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {catchError, map, Observable} from 'rxjs';
-import {Product} from "../models/product.model";
 import {ErrorHandlingService} from "./errorhandling.service";
 import {environment} from "../../../environment/environment";
 import {UserService} from "./user.service";
 import {ApiResponse} from "../models/ApiResponse.model";
+import {ToastService} from "../toast/toast-services";
 
 
 @Injectable({
@@ -15,7 +15,8 @@ export class ProductService {
 
     constructor(private http: HttpClient,
                 private errorHandlingService: ErrorHandlingService,
-                private userService: UserService) {
+                private userService: UserService,
+                private toastService: ToastService) {
     }
 
     public getAll(): Observable<any[]> {
@@ -47,14 +48,15 @@ export class ProductService {
         );
     }
 
-    public addProduct(product: Object) {
+    public createProduct(product: Object) {
         let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})
-        return this.http.post(environment.apiKey + '/products/insert', product, {
+        return this.http.post(environment.apiKey + 'product/insert', product, {
             headers: header
         })
             .pipe(map((data: any) => {
                 if (data.code === 'ACCEPTED') {
                     return data.payload;
+
                 } else {
                     throw new Error(data.payload)
                 }
@@ -63,15 +65,17 @@ export class ProductService {
 
     public deleteProduct(id: number): Observable<void> {
         let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})
-        return this.http.delete<ApiResponse>(environment.apiKey + 'product/delete' + id, {
+        return this.http.delete<ApiResponse>(environment.apiKey + 'product/delete/' + id, {
             headers: header
-        })
-            .pipe(map(data => {
+        }).pipe(
+            map(data => {
                 if (data.code === 'ACCEPTED') {
+                    this.toastService.show('Product succesvol verwijderd!', {classname: 'bg-success text-light', delay: 2000});
                 } else {
                     throw new Error(data.message)
                 }
-            }));
+            }
+        ));
     }
 
     public updateProduct(updatedCode: Object): Observable<void> {

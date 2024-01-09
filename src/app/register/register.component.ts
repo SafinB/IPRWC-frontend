@@ -34,7 +34,6 @@ export class RegisterComponent {
     const name: string = this.userRegisterForm.value["name"] ?? '';
     const email: string = this.userRegisterForm.value["email"] ?? '';
     const password: string = this.userRegisterForm.value["password"] ?? '';
-    console.log(name);
 
     this.authService.registerHandler(name, email, password).subscribe({
         next: () => {
