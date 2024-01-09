@@ -1,0 +1,56 @@
+<app-navigation></app-navigation>
+<app-toasts></app-toasts>
+
+<div class="vh-100 d-flex CenteringCreateProductPage">
+    <div class="container container-top-margin">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-6 col-xl-6">
+                <div class="card shadow-lg border-0 my-5 rounded-0">
+                    <div class="maakProduct text-center p-4 d-flex flex-column">
+                        <h4 class="my-auto">Maak een promocode aan</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <form [formGroup]="createPromoForm">
+                                    <div class="row mb-3">
+                                        <div class="mb-3">
+                                            <input
+                                                    class="form-control form-control-user"
+                                                    type="text"
+                                                    placeholder="Promo code"
+                                                    formControlName="code"
+                                                    name="name"/>
+                                        </div>
+                                        <div>
+                                            <input
+                                                    class="form-control form-control-user"
+                                                    type="number"
+                                                    placeholder="Discount"
+                                                    formControlName="discount"
+                                                    name="number"/>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-danger d-block btn-user w-100 spaceBetween" type="button" routerLink="/product-view">
+                                            <div>
+                                                <i></i>Annuleer
+                                            </div>
+                                        </button>
+                                        <button class="btn btn-warning d-block btn-user w-100" type="submit" (click)="createProduct()">
+                                            <div>
+                                                <i></i>Maak promocode aan
+                                            </div>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

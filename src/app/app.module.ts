@@ -21,6 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {ToastsContainer} from "./shared/toast/toasts-container.component";
 import { CartComponent } from './cart/cart.component';
 import { ProductViewComponent } from './admin/product-view/product-view.component';
+import { PromoViewComponent } from './admin/promo-view/promo-view.component';
+import { PromoCreateComponent } from './admin/promo-view/promo-create/promo-create.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { ProductViewComponent } from './admin/product-view/product-view.componen
     HerobannerComponent,
     CartComponent,
     ProductViewComponent,
+    PromoViewComponent,
+    PromoCreateComponent,
   ],
     imports: [
         BrowserModule,

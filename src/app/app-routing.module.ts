@@ -9,6 +9,8 @@ import {AdminComponent} from "./admin/admin.component";
 import {ProductViewComponent} from "./admin/product-view/product-view.component";
 import {ProductCreateComponent} from "./admin/product-view/product-create/product-create.component";
 import {ProductUpdateComponent} from "./admin/product-view/product-update/product-update.component";
+import {PromoViewComponent} from "./admin/promo-view/promo-view.component";
+import {PromoCreateComponent} from "./admin/promo-view/promo-create/promo-create.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,7 +22,10 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'product-view', component: ProductViewComponent},
   {path: 'product-create', component: ProductCreateComponent},
-  {path: 'product-update/:id', component: ProductUpdateComponent}
+  {path: 'product-update/:id', component: ProductUpdateComponent},
+  {path: 'promocode-view', component: PromoViewComponent},
+  {path: 'promocode-create', component: PromoCreateComponent},
+
 ];
 
 @NgModule({
