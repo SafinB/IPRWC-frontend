@@ -52,7 +52,7 @@ export class ProductService {
     }
 
     public getProductById(id: number): Observable<Product> {
-        return this.http.get<Product>('/user/' + id)
+        return this.http.get<Product>('get/' + id)
             .pipe(catchError(this.errorHandlingService.throwError));
     }
 

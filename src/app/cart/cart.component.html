@@ -1,6 +1,11 @@
 <app-navigation></app-navigation>
 <app-toasts></app-toasts>
 
+<div *ngIf="appliedPromoCode">
+    <p>Geselecteerde promotiecode: {{ appliedPromoCode.code }}</p>
+    <p>Korting: {{ appliedPromoCode.discount }}%</p>
+</div>
+
 <div class="container mt-5">
     <div class="row">
         <div class="card p-3 shadow col-md-8">
@@ -24,22 +29,33 @@
         </div>
 
         <div class="col-md-4">
+            <div class="afrekenBox text-center p-4 d-flex flex-column justify-content-center">
+                <h4 class="my-auto">Afrekenen</h4>
+            </div>
             <div class="card p-3 shadow">
-                <div class="card-body">
-                    <h2>Afrekenen</h2>
-                    <p>Totaalbedrag: {{ calculateTotalAmount() | currency }}</p>
-                    <button (click)="removeAllProductsFromCart()" class="btn btn-danger mt-3 btn-space">Cart Legen</button>
-                    <button class="btn btn-success mt-3">Bestellen</button>
-                    <form>
-                        <div class="mb-3 mt-5">
-                            <input type="text" class="form-control" id="promoCode" placeholder="Promocode">
+                <div class="card-body text-center">
+                    <form *ngIf="!appliedPromoCode" (ngSubmit)="applyPromoCode()" #promoForm="ngForm">
+                        <div class="mb-3">
+                            <input [(ngModel)]="promoCodeText" name="promoCode" type="text" class="form-control" id="promoCode" placeholder="Promocode" [ngModelOptions]="{standalone: true}">
                         </div>
-                        <button type="button" class="btn btn-warning">Toepassen</button>
-
+                        <button type="submit" class="btn btn-warning">Toepassen</button>
                     </form>
+
+                    <button *ngIf="appliedPromoCode" (click)="cancelPromo()" class="btn btn-danger btn-space">Annuleer Promo</button>
                 </div>
             </div>
+            <div class="card card-body p-3 shadow text-center">
+                <form>
+                    <h3>Totaalbedrag: {{ calculateTotalAmount() | currency }}</h3>
+                    <h3 *ngIf="appliedPromoCode">
+                        Ingevulde promotiecode: {{ appliedPromoCode.code }} ({{ appliedPromoCode.discount }}% korting)
+                    </h3>
+                    <button class="btn btn-success mt-5">Bestellen</button>
+                </form>
+            </div>
         </div>
+
+
     </div>
 </div>
 

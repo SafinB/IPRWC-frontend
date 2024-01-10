@@ -1,31 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from "./auth/login/login.component";
-import {RegisterComponent} from "./register/register.component";
 import {ProductsComponent} from "./products/products.component";
 import {HerobannerComponent} from "./herobanner/herobanner.component";
 import {CartComponent} from "./cart/cart.component";
-import {AdminComponent} from "./admin/admin.component";
-import {ProductViewComponent} from "./admin/product-view/product-view.component";
-import {ProductCreateComponent} from "./admin/product-view/product-create/product-create.component";
-import {ProductUpdateComponent} from "./admin/product-view/product-update/product-update.component";
-import {PromoViewComponent} from "./admin/promo-view/promo-view.component";
-import {PromoCreateComponent} from "./admin/promo-view/promo-create/promo-create.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'home', component: HerobannerComponent},
-  {path: 'login', component: LoginComponent, data: { animation: 'openClosePage' }},
-  {path: 'register', component: RegisterComponent},
-  {path: 'products', component: ProductsComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'product-view', component: ProductViewComponent},
-  {path: 'product-create', component: ProductCreateComponent},
-  {path: 'product-update/:id', component: ProductUpdateComponent},
-  {path: 'promocode-view', component: PromoViewComponent},
-  {path: 'promocode-create', component: PromoCreateComponent},
-
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./products/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
 ];
 
 @NgModule({

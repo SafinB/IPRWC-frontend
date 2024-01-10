@@ -1,9 +1,9 @@
 export class User {
-  public id?: string;
+  public id: string;
   public name: string;
   public email: string;
   public password: string;
-  public role?: boolean;
+  public role: boolean;
 
 
   constructor(id: string, name: string, email: string, password: string, role: boolean) {

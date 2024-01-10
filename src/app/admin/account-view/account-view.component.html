@@ -1,0 +1,29 @@
+<app-navigation></app-navigation>
+<app-toasts></app-toasts>
+
+<div class="container mt-3">
+    <div class="table-container">
+        <table class="table table-striped">
+            <thead class="sticky-top">
+            <tr>
+                <th class="column px-4">Naam</th>
+                <th class="column px-4">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+                <td class="px-4">{{ user.name }}</td>
+                <td class="px-4">{{ user.email }}</td>
+                <td class="px-4 text-end">
+
+                    <button class="btn btn-outline-danger" (click)="deleteUser(user.id)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-footer></app-footer>

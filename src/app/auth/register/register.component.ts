@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {AuthService} from "../shared/services/auth.Service";
-import {ToastService} from "../shared/toast/toast-services"
+import {AuthService} from "../../shared/services/auth.Service";
+import {ToastService} from "../../shared/toast/toast-services"
 
 
 @Component({

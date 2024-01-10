@@ -21,7 +21,7 @@ export class ProductViewComponent {
 
     onProductUpdateClick(id: string): void {
         this.productService.setProductID(id);
-        this.router.navigate(['/product-update', id]);
+        this.router.navigate(['/admin/product-update', id]);
     }
 
     getProducts(): void {
