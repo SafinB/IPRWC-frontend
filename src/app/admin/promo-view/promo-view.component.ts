@@ -22,7 +22,6 @@ export class PromoViewComponent implements OnInit{
     this.promocodeService.getAllCodes().subscribe((response) => {
       response.forEach((promos: Promocode) => {
         this.Promos = response;
-        console.log(this.Promos);
       })
     })
   }

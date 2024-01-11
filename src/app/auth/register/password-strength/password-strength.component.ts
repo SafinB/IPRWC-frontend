@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/core';
+import {EventEmitter, Input, Output, SimpleChange} from '@angular/core';
 
 @Component({
   selector: 'app-password-strength',

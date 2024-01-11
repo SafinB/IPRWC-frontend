@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ProductService} from "../../../shared/services/product.service";
 import {ToastService} from "../../../shared/toast/toast-services";
 import {Router} from "@angular/router";
 import {PromocodeService} from "../../../shared/services/promocode.service";

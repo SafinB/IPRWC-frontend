@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, catchError, map, Observable, Subject} from "rxjs";
-import {UserDTO} from "../models/userDTO.model";
 import {User} from "../models/User";
 import {ErrorHandlingService} from "./errorhandling.service";
 import {ApiResponse} from "../models/ApiResponse.model";

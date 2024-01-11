@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, map, Observable, pipe} from 'rxjs';
+import {catchError, map, Observable} from 'rxjs';
 import {ErrorHandlingService} from "./errorhandling.service";
 import {environment} from "../../../environment/environment";
 import {UserService} from "./user.service";
@@ -93,7 +93,6 @@ export class ProductService {
             price: price,
             description: description,
         }
-        console.log(updateProductData);
         return this.http.put<ApiResponse>(environment.apiKey + 'product/update', updateProductData)
             .pipe(
                 map(data => {
