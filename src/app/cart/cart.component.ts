@@ -97,11 +97,15 @@ export class CartComponent implements OnInit {
       const foundPromoCode = this.promoCodes.find(promo => promo.code === enteredPromoCode);
 
       if (foundPromoCode) {
-        const discountPercentage = foundPromoCode.discount;
-        this.currentDiscountPercentage = discountPercentage;
-        this.appliedPromoCode = foundPromoCode;
+        if (foundPromoCode.active) {
+          const discountPercentage = foundPromoCode.discount;
+          this.currentDiscountPercentage = discountPercentage;
+          this.appliedPromoCode = foundPromoCode;
 
-        this.toastService.show(`Promotiecode toegepast! Korting: ${discountPercentage}%`, { classname: 'bg-success text-light', delay: 2000 });
+          this.toastService.show(`Promotiecode toegepast! Korting: ${discountPercentage}%`, { classname: 'bg-success text-light', delay: 2000 });
+        } else {
+          this.toastService.show(`De promotiecode ${this.promoCodeText} is niet actief`, { classname: 'bg-danger text-light', delay: 2000 });
+        }
       } else {
         this.toastService.show('Ongeldige promotiecode', { classname: 'bg-danger text-light', delay: 2000 });
       }
@@ -109,6 +113,7 @@ export class CartComponent implements OnInit {
       this.toastService.show('Voer een promotiecode in', { classname: 'bg-warning text-light', delay: 2000 });
     }
   }
+
 
   cancelPromo() {
     this.appliedPromoCode = null;

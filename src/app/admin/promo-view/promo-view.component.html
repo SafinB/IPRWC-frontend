@@ -28,7 +28,7 @@
                 <td class="px-4">{{ promos.active }}</td>
                 <td class="px-4 text-end">
                     <button class="btn btn-outline-warning spaceBetween">
-                        <i class="bi bi-pencil"></i>
+                        <i class="bi bi-pencil"(click)="togglePromoStatus(promos.id, promos.active)"></i>
                     </button>
                     <button class="btn btn-outline-danger" (click)="deletePromo(promos.id)">
                         <i class="bi bi-trash"></i>

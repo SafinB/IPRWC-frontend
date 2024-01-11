@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {map, Observable} from "rxjs";
+import {catchError, map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ApiResponse} from "../models/ApiResponse.model";
 import {environment} from "../../../environment/environment";
@@ -60,4 +60,20 @@ export class PromocodeService{
                 }
             }));
     }
+
+    public toggleCodeStatus(id: string, active: boolean): Observable<void> {
+        const header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()});
+        return this.http.put<ApiResponse>(environment.apiKey + 'promocode/toggle-status/' + id, { active }, {
+            headers: header
+        }).pipe(
+            map(data => {
+                if (data.code === 'ACCEPTED') {
+
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+        );
+    }
+
 }

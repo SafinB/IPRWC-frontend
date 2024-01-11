@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
         | Promise<boolean | UrlTree> {
         const user = this.userService.getUser();
 
-        if (user?.id === null && user?.id === undefined){
+        if (this.userService.getUser() !== null || undefined){
             return true;
         } else {
             return this.router.createUrlTree(['/']);

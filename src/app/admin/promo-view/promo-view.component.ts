@@ -31,4 +31,11 @@ export class PromoViewComponent implements OnInit{
       this.getPromos();
       })
   }
+
+  togglePromoStatus(id: string, currentStatus: boolean): void {
+    const newStatus = !currentStatus;
+    this.promocodeService.toggleCodeStatus(id, newStatus).subscribe(() => {
+      this.getPromos();
+    });
+  }
 }
