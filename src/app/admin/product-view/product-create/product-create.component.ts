@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../shared/services/product.service";
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {ToastService} from "../../../shared/toast/toast-services";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.scss']
 })
-export class ProductCreateComponent {
+export class ProductCreateComponent implements OnInit{
 
   createProductForm = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -37,7 +37,7 @@ export class ProductCreateComponent {
         next: () => {
           this.createProductForm.reset();
           setTimeout(() => {
-            this.router.navigate(['/product-view']);
+            this.router.navigate(['/admin/product-view']);
             this.toastService.show('Product met succes aangemaakt', {classname: 'bg-success text-light', delay: 3000});
           }, 1000);
         },

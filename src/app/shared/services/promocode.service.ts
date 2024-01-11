@@ -1,23 +1,17 @@
 import {Injectable} from "@angular/core";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ApiResponse} from "../models/ApiResponse.model";
 import {environment} from "../../../environment/environment";
 import {UserService} from "./user.service";
-import {Promocode} from "../models/Promocode.model";
-import {ErrorHandlingService} from "./errorhandling.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromocodeService{
 
-    public promoID!: string;
-
-
     constructor(private http: HttpClient,
-                private userService: UserService,
-                private errorHandlingService: ErrorHandlingService) {
+                private userService: UserService) {
     }
     public getAllCodes(): Observable<any> {
         const apiKey = 'http://localhost:8080/promocode/get';
@@ -40,33 +34,6 @@ export class PromocodeService{
                 }
             }));
     }
-
-    getPromoCodeById(id: string): Observable<Promocode> {
-        const apiKey = `${environment.apiKey}promocode/get/${id}`;
-
-        return this.http.get<ApiResponse>(apiKey, {
-            headers: new HttpHeaders({ "Authorization": "Bearer " + this.userService.getJWT() })
-        }).pipe(
-            map(data => {
-                if (data.code === "ACCEPTED") {
-                    const payloadItem = data.payload;
-                    return new Promocode(
-                        payloadItem.id,
-                        payloadItem.code,
-                        payloadItem.active,
-                        payloadItem.discount
-                    );
-                } else {
-                    throw new Error(data.message);
-                }
-            }),
-            catchError((error) => {
-                this.errorHandlingService.throwError(error);
-                return throwError(error);
-            })
-        );
-    }
-
 
     public postCode(newCode: Object): Observable<void> {
         let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})

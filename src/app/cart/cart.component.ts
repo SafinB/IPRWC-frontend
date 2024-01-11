@@ -98,10 +98,7 @@ export class CartComponent implements OnInit {
 
       if (foundPromoCode) {
         const discountPercentage = foundPromoCode.discount;
-        this.currentDiscountPercentage = discountPercentage; // Bijhouden van de huidige korting
-
-        const discountedAmount = this.calculateTotalDiscountedAmount(discountPercentage);
-        const newTotalAmount = this.calculateTotalAmount() - discountedAmount;
+        this.currentDiscountPercentage = discountPercentage;
         this.appliedPromoCode = foundPromoCode;
 
         this.toastService.show(`Promotiecode toegepast! Korting: ${discountPercentage}%`, { classname: 'bg-success text-light', delay: 2000 });
@@ -111,10 +108,6 @@ export class CartComponent implements OnInit {
     } else {
       this.toastService.show('Voer een promotiecode in', { classname: 'bg-warning text-light', delay: 2000 });
     }
-  }
-
-  calculateTotalDiscountedAmount(discountPercentage: number): number {
-    return discountPercentage / 100 * this.cartItems.reduce((total, cartItem) => total + (cartItem.product.price * cartItem.amount), 0);
   }
 
   cancelPromo() {

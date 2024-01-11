@@ -8,11 +8,10 @@ import {AuthService} from "../shared/services/auth.Service";
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit{
-  collapsed: boolean = true;
 
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
-  user?: string = this.userService.getUser()?.fullName;
+  user?: string = this.userService.getUser()?.name;
 
   constructor(private authService: AuthService,
               private userService: UserService) {}

@@ -7,7 +7,7 @@
       <div class="col-md-9 col-lg-6 col-xl-6">
         <div class="card shadow-lg border-0 my-5 rounded-0">
           <div class="maakAccount text-center p-4 d-flex flex-column">
-            <h4 class="my-auto">Maak een account!</h4>
+            <h2 class="my-auto">Maak een account!</h2>
           </div>
           <div class="card-body">
             <div class="col-lg-12">
@@ -36,22 +36,22 @@
                   <div class="input-group mb-3">
                   <input
                     class=" form-control form-control-user"
+                    [type]="passwordVisibility ? 'text' : 'password'"
                     type="password"
                     placeholder="Wachtwoord"
                     formControlName="password"
-                    name="password"
-                  />
+                    name="password"/>
+                    <button class="btn btn-outline-secondary" type="button" id="toggleNewPassword"
+                            (click)="onChangePassword()">
+                      <i class="bi bi-eye" id="eyeIcon3" *ngIf="passwordVisibility"></i>
+                      <i class="bi bi-eye-slash" id="eyeIcon4" *ngIf="!passwordVisibility"></i>
+                    </button>
                   </div>
-                  <app-password-strength [passwordToCheck]="userRegisterForm.controls['password'].value"
-                                         (passwordStrength)="passwordValid($event)"></app-password-strength>
+                  <app-password-strength
+                          [passwordToCheck]="userRegisterForm.controls['password'].value"
+                          (passwordStrength)="passwordValid($event)">
+                  </app-password-strength>
 
-<!--                  <input-->
-<!--                    class="mt-4 mb-3 form-control form-control-user"-->
-<!--                    type="password"-->
-<!--                    placeholder="Bevestig wachtwoord"-->
-<!--                    formControlName="password"-->
-<!--                    name="password"-->
-<!--                  />-->
                   <button
                     class="btn btn-warning d-block btn-user w-100 mb-2"
                     type="submit"

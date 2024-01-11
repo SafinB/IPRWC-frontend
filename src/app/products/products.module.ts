@@ -26,5 +26,5 @@ import {ProductsComponent} from "./products.component";
     ]
 })
 
-export class ProductModule {
+export class ProductsModule {
 }

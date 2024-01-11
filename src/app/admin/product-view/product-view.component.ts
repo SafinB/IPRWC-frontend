@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../../shared/models/product.model";
 import {ProductService} from "../../shared/services/product.service";
 import {Router} from "@angular/router";
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
     templateUrl: './product-view.component.html',
     styleUrls: ['./product-view.component.scss']
 })
-export class ProductViewComponent {
+export class ProductViewComponent implements OnInit{
 
     public products: Product[] = [];
 

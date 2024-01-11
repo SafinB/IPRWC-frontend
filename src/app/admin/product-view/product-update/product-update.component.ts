@@ -1,19 +1,17 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProductService } from "../../../shared/services/product.service";
 import { Router} from "@angular/router";
 import { ToastService } from "../../../shared/toast/toast-services";
-import {Product} from "../../../shared/models/product.model";
 
 @Component({
   selector: 'app-product-update',
   templateUrl: './product-update.component.html',
   styleUrls: ['./product-update.component.scss']
 })
-export class ProductUpdateComponent {
+export class ProductUpdateComponent implements OnInit{
 
   @Input() productId!: number;
-  product$!: Product;
 
   updateProductForm: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -48,7 +46,7 @@ export class ProductUpdateComponent {
 
       this.productService.updateProductData(name, price, description, id).subscribe(() => {
         setTimeout(() => {
-          this.router.navigate(['/product-view']);
+          this.router.navigate(['/admin/product-view']);
           this.toastService.show('Product met succes bijgewerkt', {classname: 'bg-success text-light', delay: 3000});
         }, 1000);
         if (this.updateProductForm !== null) {

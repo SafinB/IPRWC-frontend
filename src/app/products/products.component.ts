@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../shared/models/product.model";
 import {ProductService} from "../shared/services/product.service";
 import {CartService} from "../shared/services/cart.service";
-import {ToastService} from "../shared/toast/toast-services";
 import {AuthService} from "../shared/services/auth.Service";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
@@ -19,7 +18,6 @@ export class ProductsComponent implements OnInit{
 
   constructor(private productService: ProductService,
               private cartService: CartService,
-              private toastService: ToastService,
               private authService: AuthService,
               private router: Router) {}
 
@@ -40,7 +38,7 @@ export class ProductsComponent implements OnInit{
     }
 
     addToCart(product: Product) {
-        if (this.authService.userLoggedIn() === false) {
+        if (!this.authService.userLoggedIn()) {
             Swal.fire({
                 title: "Je bent niet ingelogd",
                 text: "Log in om dit product toe te voegen aan je winkelmandje",

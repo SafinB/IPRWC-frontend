@@ -17,8 +17,6 @@ export class AuthService {
 
     private LoggedIn = new BehaviorSubject<boolean>(this.userLoggedIn());
 
-    isLoggedIn$ = this.LoggedIn.asObservable();
-
 
     constructor(private http: HttpClient,
                 private router: Router,

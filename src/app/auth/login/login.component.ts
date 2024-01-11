@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../shared/services/auth.Service";
 
 @Component({
@@ -7,11 +7,10 @@ import {AuthService} from "../../shared/services/auth.Service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   passwordVisibility: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private authService: AuthService,
   ) {}
 
