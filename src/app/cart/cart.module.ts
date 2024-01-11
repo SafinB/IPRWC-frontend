@@ -5,6 +5,7 @@ import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastsContainer} from "../shared/toast/toasts-container.component";
 import {RouterModule} from "@angular/router";
+import {AuthGuard} from "../auth/auth.guard";
 
 @NgModule({
     declarations: [
@@ -15,7 +16,7 @@ import {RouterModule} from "@angular/router";
         CommonModule,
         ReactiveFormsModule,
         RouterModule.forChild([
-            {path: '', component: CartComponent},
+            {path: '', component: CartComponent, canActivate: [AuthGuard]},
         ]),
         ToastsContainer,
         FormsModule
