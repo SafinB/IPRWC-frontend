@@ -27,6 +27,7 @@ export class ProductUpdateComponent implements OnInit{
   ngOnInit(): void {
     if (this.productId) {
       this.productService.getProductById(this.productId).subscribe((product) => {
+        console.log(product);
         this.updateProductForm.patchValue({
           name: product.name,
           price: product.price,
@@ -37,6 +38,7 @@ export class ProductUpdateComponent implements OnInit{
   }
 
   updateProduct(): void {
+    this.toastService.show('We zijn bezig met bijwerken', {classname: 'bg-info text-light', delay: 600});
     if (this.updateProductForm !== null && this.updateProductForm !== undefined) {
       const id: string = this.productService.productID;
 

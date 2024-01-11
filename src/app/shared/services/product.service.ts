@@ -93,8 +93,10 @@ export class ProductService {
             price: price,
             description: description,
         }
-        return this.http.put<ApiResponse>(environment.apiKey + 'product/update', updateProductData)
-            .pipe(
+        let header = new HttpHeaders({"Authorization": "Bearer " + this.userService.getJWT()})
+        return this.http.put<ApiResponse>(environment.apiKey + 'product/update', updateProductData, {
+            headers: header
+        }).pipe(
                 map(data => {
                     if (data.code === 'ACCEPTED') {
                         return data;

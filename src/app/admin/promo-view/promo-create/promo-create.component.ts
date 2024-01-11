@@ -24,8 +24,8 @@ export class PromoCreateComponent implements OnInit{
   }
 
 
-  createProduct() {
-    this.toastService.show('We zijn bezig met het maken van een product', {
+  createPromo() {
+    this.toastService.show('We zijn bezig met het maken van een promocode', {
       classname: 'bg-info text-light', delay: 500
     });
 
@@ -37,7 +37,7 @@ export class PromoCreateComponent implements OnInit{
           next: () => {
             this.createPromoForm.reset();
             setTimeout(() => {
-              this.router.navigate(['/promocode-view']);
+              this.router.navigate(['/admin/promocode-view']);
               this.toastService.show('Promo met succes aangemaakt', {classname: 'bg-success text-light', delay: 3000});
             }, 1000);
           },
@@ -46,6 +46,4 @@ export class PromoCreateComponent implements OnInit{
           }
         }
     )};
-
-
 }
