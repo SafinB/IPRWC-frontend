@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastsContainer} from "../shared/toast/toasts-container.component";
 import {RouterModule} from "@angular/router";
 import {AuthGuard} from "../auth/auth.guard";
+import {AdminGuard} from "../shared/services/Admin.guard";
 
 @NgModule({
     declarations: [
