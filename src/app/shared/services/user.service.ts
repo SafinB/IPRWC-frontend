@@ -50,7 +50,7 @@ export class UserService {
   }
 
   public getAll(): Observable<any> {
-    const apiKey = 'http://localhost:8080/auth/get';
+    const apiKey = 'https://159.223.241.7:8443/auth/get';
 
     return this.http.get<ApiResponse>(apiKey).pipe(
         map(data => {
