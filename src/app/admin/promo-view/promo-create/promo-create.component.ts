@@ -38,11 +38,11 @@ export class PromoCreateComponent implements OnInit{
             this.createPromoForm.reset();
             setTimeout(() => {
               this.router.navigate(['/admin/promocode-view']);
-              this.toastService.show('Promo met succes aangemaakt', {classname: 'bg-success text-light', delay: 3000});
+              this.toastService.show('Promo met succes aangemaakt', {classname: 'bg-success text-light', delay: 2000});
             }, 1000);
           },
           error: (message) => {
-            this.toastService.show(message, {classname: 'bg-danger text-light', delay: 3000});
+            this.toastService.show(message, {classname: 'bg-danger text-light', delay: 2000});
           }
         }
     )};

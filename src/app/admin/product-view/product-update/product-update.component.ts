@@ -27,7 +27,6 @@ export class ProductUpdateComponent implements OnInit{
   ngOnInit(): void {
     if (this.productId) {
       this.productService.getProductById(this.productId).subscribe((product) => {
-        console.log(product);
         this.updateProductForm.patchValue({
           name: product.name,
           price: product.price,
@@ -49,7 +48,7 @@ export class ProductUpdateComponent implements OnInit{
       this.productService.updateProductData(name, price, description, id).subscribe(() => {
         setTimeout(() => {
           this.router.navigate(['/admin/product-view']);
-          this.toastService.show('Product met succes bijgewerkt', {classname: 'bg-success text-light', delay: 3000});
+          this.toastService.show('Product met succes bijgewerkt', {classname: 'bg-success text-light', delay: 2000});
         }, 1000);
         if (this.updateProductForm !== null) {
           this.updateProductForm.reset();

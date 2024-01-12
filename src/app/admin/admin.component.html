@@ -2,46 +2,46 @@
 <app-toasts></app-toasts>
 
 <div class="scroll-target container mt-5">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 rounded-5 shadow h-100">
-                <img src="/assets/Img/Logo.webp" class="card-img-top rounded-5" alt="Card Image">
-                <div class="card-body">
-                    <h1 class="card-title">Products</h1>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button class="btn btn-warning" routerLink="/admin/product-view">
-                        Producten beheren
-                    </button>
-                </div>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-md-3"> <!-- Aangepaste grootte van col-md-3 in plaats van col-md-4 -->
+      <div class="card mb-4 rounded-5 shadow h-100">
+        <img src="/assets/Img/Logo.webp" class="card-img-top rounded-5" alt="Card Image">
+        <div class="card-body text-center"> <!-- Gecentreerde tekst -->
+          <h1 class="card-title">Products</h1>
+          <p class="card-text">View van alle producten.</p>
+          <button class="btn btn-warning" routerLink="/admin/product-view">
+            Producten beheren
+          </button>
         </div>
-
-     <div class="col-md-4">
-            <div class="card mb-4 rounded-5 shadow h-100">
-                <img src="/assets/Img/Promocode.jpg" class="card-img-top rounded-5" alt="Card Image">
-                <div class="card-body">
-                    <h1 class="card-title">Promocodes</h1>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button class="btn btn-warning" routerLink="/admin/promocode-view">
-                        Promocodes beheren
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card mb-4 rounded-5 shadow h-100">
-                <img src="/assets/Img/account.png" class="card-img-top rounded-5" alt="Card Image">
-                <div class="card-body">
-                    <h1 class="card-title">Gebruiker accounts</h1>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button class="btn btn-warning" routerLink="/admin/user-view">
-                        Accounts beheren
-                    </button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="col-md-3">
+      <div class="card mb-4 rounded-5 shadow h-100">
+        <img src="/assets/Img/Promocode.jpg" class="card-img-top rounded-5" alt="Card Image">
+        <div class="card-body text-center">
+          <h1 class="card-title">Promocodes</h1>
+          <p class="card-text">View van alle promocodes</p>
+          <button class="btn btn-warning" routerLink="/admin/promocode-view">
+            Promocodes beheren
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card mb-4 rounded-5 shadow h-100">
+        <img src="/assets/Img/account.png" class="card-img-top rounded-5" alt="Card Image">
+        <div class="card-body text-center">
+          <h1 class="card-title">Gebruiker accounts</h1>
+          <p class="card-text">View van alle accounts</p>
+          <button class="btn btn-warning" routerLink="/admin/user-view">
+            Accounts beheren
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

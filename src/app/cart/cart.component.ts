@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {ToastService} from "../shared/toast/toast-services";
 import {PromocodeService} from "../shared/services/promocode.service";
 import {Promocode} from "../shared/models/Promocode.model";
+import * as sweetalert2 from "sweetalert2";
 
 @Component({
   selector: 'app-cart',
@@ -55,15 +56,16 @@ export class CartComponent implements OnInit {
         text: "Weet je zeker dat je dit product wilt verwijderen?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#ffc107",
+        cancelButtonColor: "#911414",
         confirmButtonText: "Ja, verwijder dit product",
       }).then((result) => {
         if (result.isConfirmed) {
             this.cartService.removeProduct(cartItem.product.id);
           Swal.fire({
             text: "Het product succesvol verwijderd",
-            icon: "success"
+            icon: "success",
+            confirmButtonColor: "#ffc107",
           }).then(() => {
             this.router.navigate(['/cart']);
           });
@@ -90,7 +92,7 @@ export class CartComponent implements OnInit {
     return this.cartItems.reduce((total, cartItem) => total + (cartItem.product.price * cartItem.amount), 0) - discountedAmount;
   }
 
-  applyPromoCode() {
+  applyPromoCode(): void {
     if (this.promoCodeText.trim() !== '') {
       const enteredPromoCode = this.promoCodeText;
 
@@ -114,8 +116,40 @@ export class CartComponent implements OnInit {
     }
   }
 
+  makeOrder(): void {
+    if (this.cartItems.length > 0) {
+      sweetalert2.default.fire({
+        title: 'Bestelling plaatsen',
+        text: 'Weet je zeker dat je de bestelling wilt plaatsen?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ffc107',
+        confirmButtonText: 'Ja, plaats bestelling',
+        cancelButtonText: 'Annuleer',
+        cancelButtonColor: '#911414'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            text: "Je bestelling is geplaatst",
+            icon: "success",
+            confirmButtonColor: "#ffc107",
+          }).then(() => {
+            this.cartService.removeAllProducts();
+            this.cancelPromo();
+          });
+        }});
+      } else {
+      sweetalert2.default.fire({
+        title: 'Winkelmandje is leeg',
+        text: 'Voeg producten toe aan je winkelmandje om een bestelling te plaatsen',
+        icon: 'warning',
+        confirmButtonText: 'Duidelijk',
+        confirmButtonColor: '#ffc107'
+      });
+    }
+  }
 
-  cancelPromo() {
+  cancelPromo() : void {
     this.appliedPromoCode = null;
     this.currentDiscountPercentage = 0;
     this.toastService.show('Promotiecode geannuleerd', { classname: 'bg-info text-light', delay: 2000 });

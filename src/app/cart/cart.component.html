@@ -45,7 +45,7 @@
                     <h3 *ngIf="appliedPromoCode">
                         Ingevulde promotiecode: {{ appliedPromoCode.code }} ({{ appliedPromoCode.discount }}% korting)
                     </h3>
-                    <button class="btn btn-success mt-5">Bestellen</button>
+                    <button class="btn btn-success mt-5" (click)="makeOrder()">Bestellen</button>
                 </form>
             </div>
         </div>

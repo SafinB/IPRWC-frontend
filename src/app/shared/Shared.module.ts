@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NavigationComponent} from "../navigation/navigation.component";
 import {FooterComponent} from "../footer/footer.component";
+import {ToastsContainer} from "./toast/toasts-container.component";
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import {FooterComponent} from "../footer/footer.component";
         CommonModule,
         RouterModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        ToastsContainer
     ],
     exports: [
         NavigationComponent,

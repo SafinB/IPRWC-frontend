@@ -44,14 +44,16 @@ export class ProductsComponent implements OnInit{
                 text: "Log in om dit product toe te voegen aan je winkelmandje",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Login"
+                confirmButtonColor: "#ffc107",
+                cancelButtonColor: "#911414",
+                confirmButtonText: "Login",
+                cancelButtonText: "Annuleren"
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
                         text: "Je wordt nu doorgestuurd naar de login pagina",
-                        icon: "success"
+                        icon: "success",
+                        confirmButtonColor: "#ffc107",
                     }).then(() => {
                         this.router.navigate(['/login']);
                     });
@@ -64,14 +66,16 @@ export class ProductsComponent implements OnInit{
                 text: "Wil je verder winkelen of naar je winkelmandje gaan?",
                 icon: "success",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
+                confirmButtonColor: "#ffc107",
+                cancelButtonColor: "#911414",
                 confirmButtonText: "Winkelmandje",
+                cancelButtonText: "Verder winkelen"
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
                         text: "Je wordt nu doorgestuurd naar je winkelmandje",
-                        icon: "success"
+                        icon: "success",
+                        confirmButtonColor: "#ffc107",
                     }).then(() => {
                         this.router.navigate(['/cart']);
                     });

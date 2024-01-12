@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../shared/services/auth.Service";
 import {ToastService} from "../../shared/toast/toast-services"
+import {PasswordStrengthComponent} from "./password-strength/password-strength.component";
 
 
 @Component({
@@ -10,10 +11,10 @@ import {ToastService} from "../../shared/toast/toast-services"
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
+export class RegisterComponent{
+  @ViewChild(PasswordStrengthComponent) passwordStrengthComponent!: PasswordStrengthComponent;
   passwordVisibility: boolean = false;
   passwordIsValid = false;
-
 
   userRegisterForm = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),

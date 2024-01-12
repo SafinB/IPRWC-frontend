@@ -40,7 +40,11 @@
                     type="password"
                     placeholder="Wachtwoord"
                     formControlName="password"
-                    name="password"/>
+                    name="password"
+                    [ngbPopover]="passwordStrengthComponent?.getPopoverMessage()"
+                    [placement]="'right'"
+                    popoverTrigger="focus"
+                  />
                     <button class="btn btn-outline-secondary" type="button" id="toggleNewPassword"
                             (click)="onChangePassword()">
                       <i class="bi bi-eye" id="eyeIcon3" *ngIf="passwordVisibility"></i>
@@ -48,8 +52,9 @@
                     </button>
                   </div>
                   <app-password-strength
-                          [passwordToCheck]="userRegisterForm.controls['password'].value"
-                          (passwordStrength)="passwordValid($event)">
+                    [passwordToCheck]="userRegisterForm.controls['password'].value"
+                    (passwordStrength)="passwordValid($event)"
+                    #passwordStrengthComponent>
                   </app-password-strength>
 
                   <button

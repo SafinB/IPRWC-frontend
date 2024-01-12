@@ -7,6 +7,7 @@ import {ToastsContainer} from "../shared/toast/toasts-container.component";
 import {SharedModule} from "../shared/Shared.module";
 import {RegisterComponent} from "./register/register.component";
 import {PasswordStrengthComponent} from "./register/password-strength/password-strength.component";
+import {NgbPopover} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -15,17 +16,18 @@ import {PasswordStrengthComponent} from "./register/password-strength/password-s
         RegisterComponent,
         PasswordStrengthComponent,
     ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        RouterModule.forChild([
-            {path: '', component: LoginComponent},
-            {path: 'register', component: RegisterComponent},
-        ]),
-        ReactiveFormsModule,
-        ToastsContainer,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild([
+      {path: '', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+    ]),
+    ReactiveFormsModule,
+    ToastsContainer,
+    FormsModule,
+    NgbPopover
+  ],
     exports: [
         LoginComponent,
         RegisterComponent,

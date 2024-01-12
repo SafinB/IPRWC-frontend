@@ -80,4 +80,8 @@ export class PasswordStrengthComponent implements OnChanges{
     this.bar1 = '#DDD';
     this.bar2 = '#DDD';
   }
+
+  getPopoverMessage(): string {
+    return this.msg;
+  }
 }
