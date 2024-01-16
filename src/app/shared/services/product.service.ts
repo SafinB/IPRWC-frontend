@@ -23,7 +23,7 @@ export class ProductService {
     }
 
     public getAll(): Observable<any[]> {
-        const apiKey = 'https://159.223.241.7:8080/product/get';
+        const apiKey = 'https://159.223.241.7:8443/product/get';
 
         return this.http.get<ApiResponse>(apiKey).pipe(
             map(data => {

@@ -14,7 +14,7 @@ export class PromocodeService{
                 private userService: UserService) {
     }
     public getAllCodes(): Observable<any> {
-        const apiKey = 'https://159.223.241.7:8080/promocode/get';
+        const apiKey = 'https://159.223.241.7:8443/promocode/get';
 
         return this.http.get<ApiResponse>(apiKey).pipe(
             map(data => {
