@@ -5,6 +5,7 @@ import {CartService} from "../shared/services/cart.service";
 import {AuthService} from "../shared/services/auth.Service";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
+import {ToastService} from "../shared/toast/toast-services";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ProductsComponent implements OnInit{
   constructor(private productService: ProductService,
               private cartService: CartService,
               private authService: AuthService,
-              private router: Router) {}
+              private router: Router,
+              private toastService: ToastService) {}
 
   ngOnInit() {
     this.loadCards();
@@ -32,7 +34,7 @@ export class ProductsComponent implements OnInit{
                   this.products = products;
                   },
               error => {
-                  console.error('Error fetching teams:', error);
+                  this.toastService.show(error, {classname: 'bg-danger text-light', delay: 2000});
               }
             );
     }

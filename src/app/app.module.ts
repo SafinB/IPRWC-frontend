@@ -24,7 +24,7 @@ import {SharedModule} from "./shared/Shared.module";
         MatInputModule,
         BrowserAnimationsModule,
         ToastsContainer,
-        SharedModule
+        SharedModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

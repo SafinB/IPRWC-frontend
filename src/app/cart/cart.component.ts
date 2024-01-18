@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
           this.promoCodes = promos;
         },
         (error) => {
-          console.error('Error fetching promocodes:', error);
+          this.toastService.show(error, {classname: 'bg-danger text-light', delay: 2000});
         }
     );
   }

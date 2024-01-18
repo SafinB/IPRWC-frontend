@@ -10,7 +10,7 @@ import {AuthService} from "../shared/services/auth.Service";
 export class NavigationComponent implements OnInit{
 
   isLoggedIn: boolean = false;
-  isAdmin: boolean = false;
+  isAdmin?: boolean = false;
   user?: string = this.userService.getUser()?.name;
 
   constructor(private authService: AuthService,
@@ -18,7 +18,7 @@ export class NavigationComponent implements OnInit{
 
   ngOnInit(): void {
       if (this.userService.getUser() !== null && this.userService.getUser() !== undefined) {
-        this.isAdmin = this.userService.getUser().role;
+        this.isAdmin = this.userService.getUser()?.role;
       }
   }
 

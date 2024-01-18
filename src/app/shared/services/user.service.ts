@@ -6,6 +6,8 @@ import {ErrorHandlingService} from "./errorhandling.service";
 import {ApiResponse} from "../models/ApiResponse.model";
 import {environment} from "../../../environment/environment";
 import {ToastService} from "../toast/toast-services";
+import CryptoJS from 'crypto-js';
+
 
 @Injectable({
     providedIn: "root"
@@ -14,6 +16,7 @@ import {ToastService} from "../toast/toast-services";
 
 export class UserService {
   public userName$: Subject<string> = new BehaviorSubject<string>("name");
+  private secretKey: string = 'secretKey';
 
   constructor(
     private http: HttpClient,
@@ -23,15 +26,23 @@ export class UserService {
   }
 
   setUser(account: User): void {
-    sessionStorage.setItem('user', JSON.stringify(account));
+    const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(account), this.secretKey).toString();
+    sessionStorage.setItem('user', encryptedData);
   }
 
-  getUser() {
+  getUser(): User | null {
     const userJson = sessionStorage.getItem('user');
-    if (userJson !== null) {
-      return JSON.parse(userJson);
+    if (userJson !== null && userJson.trim() !== '') {
+      try {
+        const decryptedData = CryptoJS.AES.decrypt(userJson, this.secretKey).toString(CryptoJS.enc.Utf8);
+        return JSON.parse(decryptedData);
+      } catch (error) {
+        return null;
+      }
     }
+    return null;
   }
+
 
   getJWT(): string | null {
     return sessionStorage.getItem('jwt');
